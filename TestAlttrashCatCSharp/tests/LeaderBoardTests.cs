@@ -7,25 +7,24 @@ namespace alttrashcat_tests_csharp.tests
 {
     public class LeaderBoardTests
     {
-        AltUnityDriver altUnityDriver;
-        MainMenuPage mainMenuPage;
-        LeaderBoardPage leaderBoardPage;
+        private MainMenuPage mainMenuPage;
+        private LeaderBoardPage leaderBoardPage;
+        private AltUnityDriver altUnityDriver;
 
 
         [SetUp]
-        public void Setup()
+        public void SetupBeforeEachTest()
         {
             altUnityDriver = new AltUnityDriver(port: 13000);
             mainMenuPage = new MainMenuPage(altUnityDriver);
             mainMenuPage.LoadScene();
-            leaderBoardPage = new LeaderBoardPage(altUnityDriver);
+            leaderBoardPage = new LeaderBoardPage(this.altUnityDriver);
         }
 
         [TearDown]
         public void Dispose()
         {
             altUnityDriver.Stop();
-            Thread.Sleep(1000);
         }
 
 

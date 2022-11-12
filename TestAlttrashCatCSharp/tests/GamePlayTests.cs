@@ -8,16 +8,16 @@ namespace alttrashcat_tests_csharp.tests
 {
     public class GamePlayTests
     {
-        AltUnityDriver altUnityDriver;
-        MainMenuPage mainMenuPage;
-        GamePlay gamePlayPage;
-        PauseOverlayPage pauseOverlayPage;
-        GetAnotherChancePage getAnotherChancePage;
-        [SetUp]
-        public void Setup()
-        {
+        private AltUnityDriver altUnityDriver;
+        private  MainMenuPage mainMenuPage;
+        private GamePlay gamePlayPage;
+        private  PauseOverlayPage pauseOverlayPage;
+        private GetAnotherChancePage getAnotherChancePage;
 
-            altUnityDriver = new AltUnityDriver();
+        [SetUp]
+        public void SetupBeforeEachTest()
+        {
+            altUnityDriver = new AltUnityDriver(port: 13000);
             mainMenuPage = new MainMenuPage(altUnityDriver);
             mainMenuPage.LoadScene();
             mainMenuPage.PressRun();
@@ -27,12 +27,12 @@ namespace alttrashcat_tests_csharp.tests
 
         }
         [Test]
-        public void TestGamePlayDisplayedCorrectly()
+        public void TestGamePlayScreenDisplayedCorrectly()
         {
             Assert.True(gamePlayPage.IsDisplayed());
         }
         [Test]
-        public void TestGameCanBePausedAndResumed()
+        public void TestGamePausedAndResumedCorrectly()
         {
             gamePlayPage.PressPause();
             Assert.True(pauseOverlayPage.IsDisplayed());
@@ -40,7 +40,7 @@ namespace alttrashcat_tests_csharp.tests
             Assert.True(gamePlayPage.IsDisplayed());
         }
         [Test]
-        public void TestGameCanBePausedAndStopped()
+        public void TestGamePausedAndStoppedCorrectly()
         {
             gamePlayPage.PressPause();
             pauseOverlayPage.PressMainMenu();
@@ -59,7 +59,7 @@ namespace alttrashcat_tests_csharp.tests
             Assert.True(gamePlayPage.GetCurrentLife() > 0);
         }
         [Test]
-        public void TestPlayerDiesWhenObstacleNotAvoided()
+        public void TestPlayerDiesWhen3ObstacleNotAvoided()
         {
             float timeout = 20;
             while (timeout > 0)
@@ -81,7 +81,6 @@ namespace alttrashcat_tests_csharp.tests
         public void Dispose()
         {
             altUnityDriver.Stop();
-            Thread.Sleep(1000);
         }
     }
 }

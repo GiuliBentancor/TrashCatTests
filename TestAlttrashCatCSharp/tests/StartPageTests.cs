@@ -1,30 +1,34 @@
-using Altom.AltUnityDriver;
 using alttrashcat_tests_csharp.pages;
-using System;
 using System.Threading;
 using NUnit.Framework;
+using Altom.AltUnityDriver;
 
 namespace alttrashcat_tests_csharp.tests
 {
     public class StartPageTests
     {
-        private AltUnityDriver altUnityDriver;
         private MainMenuPage mainMenuPage;
         private StartPage startPage;
+        private AltUnityDriver altUnityDriver;
+
+
         [SetUp]
-        public void Setup()
+        public void SetupBeforeEachTest()
         {
-            altUnityDriver = new AltUnityDriver();
+            altUnityDriver = new AltUnityDriver(port: 13000);
+            mainMenuPage = new MainMenuPage(altUnityDriver);
+            mainMenuPage.LoadScene();
             startPage = new StartPage(altUnityDriver);
             startPage.Load();
             mainMenuPage = new MainMenuPage(altUnityDriver);
-
         }
+
         [Test]
-        public void TestStartPageLoadedCorrectly()
+        public void TestFirstPageLoadedCorrectly()
         {
             Assert.True(startPage.IsDisplayed());
         }
+
         [Test]
         public void TestStartButtonLoadMainMenu()
         {
@@ -36,7 +40,6 @@ namespace alttrashcat_tests_csharp.tests
         public void Dispose()
         {
             altUnityDriver.Stop();
-            Thread.Sleep(1000);
         }
     }
 }
