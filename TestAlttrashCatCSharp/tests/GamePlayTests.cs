@@ -1,10 +1,9 @@
 using System;
-using System.Threading;
 using Altom.AltUnityDriver;
-using alttrashcat_tests_csharp.pages;
+using TestAltTrashCatCSharp.pages;
 using NUnit.Framework;
 
-namespace alttrashcat_tests_csharp.tests
+namespace TestAltTrashCatCSharp.tests
 {
     public class GamePlayTests
     {
@@ -24,7 +23,6 @@ namespace alttrashcat_tests_csharp.tests
             gamePlayPage = new GamePlay(altUnityDriver);
             pauseOverlayPage = new PauseOverlayPage(altUnityDriver);
             getAnotherChancePage = new GetAnotherChancePage(altUnityDriver);
-
         }
         [Test]
         public void TestGamePlayScreenDisplayedCorrectly()
@@ -59,7 +57,7 @@ namespace alttrashcat_tests_csharp.tests
             Assert.True(gamePlayPage.GetCurrentLife() > 0);
         }
         [Test]
-        public void TestPlayerDiesWhen3ObstacleNotAvoided()
+        public void TestGameOver()
         {
             float timeout = 20;
             while (timeout > 0)

@@ -1,9 +1,8 @@
-using alttrashcat_tests_csharp.pages;
-using System.Threading;
+using TestAltTrashCatCSharp.pages;
 using NUnit.Framework;
 using Altom.AltUnityDriver;
 
-namespace alttrashcat_tests_csharp.tests
+namespace TestAltTrashCatCSharp.tests
 {
     public class StartPageTests
     {
@@ -30,7 +29,7 @@ namespace alttrashcat_tests_csharp.tests
         }
 
         [Test]
-        public void TestStartButtonLoadMainMenu()
+        public void TestStartLoadMainMenuCorrectly()
         {
             startPage.PressStart();
             Assert.True(mainMenuPage.IsDisplayed());

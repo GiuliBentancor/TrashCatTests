@@ -1,6 +1,6 @@
 using Altom.AltUnityDriver;
 
-namespace alttrashcat_tests_csharp.pages
+namespace TestAltTrashCatCSharp.pages
 {
     public class PauseOverlayPage : BasePage
     {

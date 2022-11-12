@@ -1,8 +1,8 @@
-using System.Threading;
 using Altom.AltUnityDriver;
-using alttrashcat_tests_csharp.pages;
+using TestAltTrashCatCSharp.pages;
 using NUnit.Framework;
-namespace alttrashcat_tests_csharp.tests
+
+namespace TestAltTrashCatCSharp.tests
 {
 
     public class MainMenuTests

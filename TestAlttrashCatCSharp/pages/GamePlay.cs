@@ -1,7 +1,7 @@
 using Altom.AltUnityDriver;
 using System;
 
-namespace alttrashcat_tests_csharp.pages
+namespace TestAltTrashCatCSharp.pages
 {
     public class GamePlay : BasePage
     {
